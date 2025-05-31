@@ -14,6 +14,7 @@ C:\Qt\6.8.2\mingw_64\bin\windeployqt.exe C:\Users\Lukew\OneDrive\Desktop\Qt\depl
 
 ## Running again
 
+npm run build -> updates to latest electron code
 Run Qt build release mode -> only if keybinder changed
 Run the python script -> watch for any errors
 generates:

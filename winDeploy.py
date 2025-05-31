@@ -51,8 +51,8 @@ print(f"Running windeployqt on {QT_EXE}")
 subprocess.run(f'"{WINDEPLOYTQT_EXE}" "{QT_EXE}"', shell=True)
 
 # Copy over default Qt startup profile
-print(f"Copying {QT_STARTUP_PROFILE} to {QT_BUILD}")
-shutil.copy2(QT_STARTUP_PROFILE, QT_BUILD)
+# print(f"Copying {QT_STARTUP_PROFILE} to {QT_BUILD}")
+# shutil.copy2(QT_STARTUP_PROFILE, QT_BUILD)
 
 # endregion
 # region: Electron Build
