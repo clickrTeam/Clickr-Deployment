@@ -1,0 +1,11 @@
+{
+  "profile_name": "EMPTY-STARTUP-PROFILE",
+  "layer_count": 1,
+  "layers": [
+    {
+      "layer_name": "default",
+      "layer_number": 0,
+      "remappings": []
+    }
+  ]
+}

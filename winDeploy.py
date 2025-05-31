@@ -26,6 +26,7 @@ BIN_FOLDER = f"./bin"
 QT_BUILD = f"{BIN_FOLDER}/keybinder"
 QT_EXE = f"{QT_BUILD}/keybinder.exe"
 QT_DEPLOY = f"./keybinder.zip"
+QT_STARTUP_PROFILE = f"./startup.json"
 
 ## Electron Paths
 ELECTRON_TMP = f"{BIN_FOLDER}/clickr-win32-x64"
@@ -49,6 +50,10 @@ shutil.copy2(QT_BUILT_EXE, QT_BUILD)
 print(f"Running windeployqt on {QT_EXE}")
 subprocess.run(f'"{WINDEPLOYTQT_EXE}" "{QT_EXE}"', shell=True)
 
+# Copy over default Qt startup profile
+print(f"Copying {QT_STARTUP_PROFILE} to {QT_BUILD}")
+shutil.copy2(QT_STARTUP_PROFILE, QT_BUILD)
+
 # endregion
 # region: Electron Build
 # Run the electron-builder command
@@ -60,3 +65,13 @@ subprocess.run([ # WIN: needed to run as admin, Initially
     "--x64",
 ], shell=True, cwd=ELECTRON)
 # endregion
+
+def get_file_size(path):
+    try:
+        file_size = os.path.getsize(path)
+        print(f"The size of the file at {ELECTRON_EXE} is {file_size} bytes")
+        print(f"The size of the file at {ELECTRON_EXE} is {file_size / (1024 * 1024):.2f} MB")
+    except FileNotFoundError:
+        print(f"File not found: {path}")
+    
+get_file_size(ELECTRON_EXE)
