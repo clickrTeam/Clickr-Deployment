@@ -33,6 +33,7 @@ ELECTRON_TMP = f"{BIN_FOLDER}/clickr-win32-x64"
 ELECTRON_BUILD = f"{BIN_FOLDER}/clickr"
 
 # region: QT Build
+# Note does not build the QT project, just deploys release build
 
 # Remove the deployment directory if it exists
 print(f"Removing {QT_BUILD} if it exists")
@@ -56,13 +57,11 @@ subprocess.run(f'"{WINDEPLOYTQT_EXE}" "{QT_EXE}"', shell=True)
 
 # endregion
 # region: Electron Build
+
 # Run the electron-builder command
 print(f"Running electron-builder on {ELECTRON}")
 subprocess.run([ # WIN: needed to run as admin, Initially
-    "electron-builder",
-    "build",
-    "--win",
-    "--x64",
+    "npm", "run", "build:win"
 ], shell=True, cwd=ELECTRON)
 # endregion
 
@@ -75,3 +74,5 @@ def get_file_size(path):
         print(f"File not found: {path}")
     
 get_file_size(ELECTRON_EXE)
+
+# 8/28/2025 - 85.97 MB / 89.15 MB 
